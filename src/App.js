@@ -94,12 +94,12 @@ function App() {
                 <ul>
                   {Forms.map((i) => (
                     <li
+                      key={Forms._id}
                       onClick={async () => {
                         try {
                           const res = await axios({
-                            url: "http://localhost:5600/books/deleteByIsbn",
-                            method: "post",
-                            data: { isbn: i.isbn },
+                            url: `http://localhost:5600/deleteForm/${Forms._id}`,
+                            method: "delete",
                             headers: { Authorization: `Bearer ${user.token}` },
                           });
                           if (res.data.msg) getMyForms();
